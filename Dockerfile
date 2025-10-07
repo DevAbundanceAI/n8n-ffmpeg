@@ -1,4 +1,7 @@
-FROM n8nio/n8n:1.113.3-alpine
+FROM ghcr.io/n8n-io/n8n:1.113.3
+
 USER root
-RUN apk add --no-cache ffmpeg
+RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg \
+    && rm -rf /var/lib/apt/lists/*
 USER node
+
